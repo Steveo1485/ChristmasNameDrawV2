@@ -8,4 +8,6 @@
 
   %body{class: "#{params[:controller]}-#{params[:action]}"}
 
-    = yield
+    = render "layouts/header"
+    .container-fluid
+      = yield

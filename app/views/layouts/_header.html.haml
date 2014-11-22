@@ -1,0 +1,15 @@
+.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: "#navbar-menu"}}
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to("Christmas Name Draw 2014", root_path, class: "navbar-brand")
+    #navbar-menu.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %li= link_to("Sign Out", destroy_user_session_path(current_user))
+        - else
+          %li= link_to("Sign In", new_user_session_path)
