@@ -1,6 +1,11 @@
+@import 'colors';
+
 // NAVBAR
 $navbar-margin-bottom: 0;
 $navbar-border-radius: 0;
+
+$brand-success: $green;
+$brand-warning: $red;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
