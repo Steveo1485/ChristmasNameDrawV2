@@ -5,9 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  has_one :list
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :family_group, inclusion: { in: Proc.new { User.family_groups } }
+
+  after_create :create_list
 
   def self.family_groups
     ["Dragseth", "King", "Nugent"]
@@ -21,4 +25,12 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
     end
   end
+
+  private
+
+  def create_list
+    list = List.where(user_id: self.id).first_or_initialize
+    list.save if list.new_record?
+  end
+
 end
