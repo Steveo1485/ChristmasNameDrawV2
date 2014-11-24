@@ -5,4 +5,22 @@ body.about-home {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+
+  #fb-connect {
+    text-align: center;
+    margin: 3em;
+    font-size: 1.2em;
+
+    a {
+      width: 190px;
+      display: block;
+      background-color: #3b579d;
+      background-image: url('icons/facebook.png');
+      background-repeat: no-repeat;
+      background-position: 2% 40%;
+      padding-left: 22px;
+      color: #fff;
+      margin: 0 auto;
+    }
+  }
 }
