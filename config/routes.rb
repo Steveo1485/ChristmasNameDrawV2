@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'about#home'
 
+  resources :items, only: [:create]
+
   get 'facebook' => 'users#facebook', as: :facebook
   get 'dashboard' => 'users#dashboard', as: :dashboard
   get 'dashboard' => 'users#dashboard', as: :user_root
