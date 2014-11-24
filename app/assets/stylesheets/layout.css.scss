@@ -1,0 +1,37 @@
+@import 'fonts';
+@import 'colors';
+
+h1, h2, h3, h4, h5 {
+  font-family: $main-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 4em;
+  color: $red;
+}
+
+h2 {
+  font-size: 3.5em;
+  color: $green;
+}
+
+h3 {
+  font-size: 3em;
+}
+
+h4 {
+  font-size: 2.5em;
+}
+
+h5 {
+  font-size: 2em;
+}
+
+h6 {
+  font-size: 1.5em;
+}
+
+body {
+  font-family: $main-sans;
+}

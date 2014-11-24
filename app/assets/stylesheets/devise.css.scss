@@ -1,0 +1,42 @@
+@import "colors";
+
+body[class^='devise'], body.users-facebook {
+  background-image: url('home/pike-place-christmas-white.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    margin-top: 2em;
+  }
+
+  #error_explanation {
+    text-align: center;
+    ul {
+      list-style-type: none;
+    }
+    li {
+      color: $red;
+    }
+    h2 {
+      font-size: 2em;
+    }
+  }
+}
+
+body.users-facebook {
+  .facebook-confirm {
+    font-size: 1.75em;
+    color: $green;
+    text-align: center;
+  }
+
+  #family-group {
+    padding: 1em;
+    background-color: rgba(150,40,27, 0.5)
+  }
+}

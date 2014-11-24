@@ -1,0 +1,34 @@
+%h1 Complete Facebook Registration
+
+= form_for(@user, url: registration_path(@user), html: {class: "form-horizontal"}) do |f|
+
+  .form-group#family-group
+    = f.label :family_group, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.select :family_group, options_for_select(User.family_groups, @user.family_group), {prompt: "Select Family Group..."}, class: "form-control"
+
+  .facebook-confirm
+    Please Confirm:
+
+  .form-group
+    = f.label :first_name, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.text_field :first_name, placeholder: "First Name", autofocus: true, class: "form-control"
+
+  .form-group
+    = f.label :last_name, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+
+  .form-group
+    = f.label :email, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.email_field :email, placeholder: "Email", class: "form-control"
+
+  = f.hidden_field :password, value: Devise.friendly_token[0,20]
+  = f.hidden_field :provider, value: session["devise.facebook_data"]["provider"]
+  = f.hidden_field :uid, value: session["devise.facebook_data"]["uid"]
+
+  .form-group
+    .col-sm-offset-2.col-sm-8
+      = f.submit "Sign Up", class: "btn btn-success"

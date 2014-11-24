@@ -1,0 +1,36 @@
+.row
+  .col-sm-12
+    .text-center
+      %h1
+        Christmas Name Draw 2014
+      %h2.hidden-xs Days Until Christmas!
+
+
+#sign-in
+  #fb-connect
+    Sign in to get started, or
+    = link_to("Connect with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-default")
+
+  = form_for(:user, url: session_path(:user), html: {class: "form-horizontal"}) do |f|
+    .form-group
+      = f.label :email, class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.email_field :email, placeholder: "Email", class: "form-control"
+
+    .form-group
+      = f.label :password, class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.password_field :password, placeholder: "Password", class: "form-control"
+
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        = f.check_box :remember_me
+        = f.label :remember_me
+
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        = f.submit "Sign In", class: "btn btn-success"
+
+  .text-center
+    Not registered?
+    = link_to("Sign up for the 2014 Christmas Name Draw!", new_user_registration_path)
