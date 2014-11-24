@@ -4,6 +4,7 @@ class AboutController < ApplicationController
   skip_after_filter :verify_policy_scoped
 
   def home
+    redirect_to user_root_path if current_user
   end
 
 end

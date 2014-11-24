@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:facebook]
   skip_after_action :verify_authorized, only: [:facebook]
   skip_after_action :verify_policy_scoped, only: [:facebook]
-  after_action :clear_facebook_session
+  after_action :clear_facebook_session, only: [:facebook]
+
+  def dashboard
+    authorize(current_user)
+    @user = current_user
+  end
 
   def facebook
     redirect_to root_path and return unless session["devise.facebook_data"].present?
