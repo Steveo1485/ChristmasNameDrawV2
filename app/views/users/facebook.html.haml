@@ -2,12 +2,13 @@
 
 = form_for(@user, url: registration_path(@user), html: {class: "form-horizontal"}) do |f|
 
-  .form-group
+  .form-group#family-group
     = f.label :family_group, class: "col-sm-2 control-label"
     .col-sm-8
       = f.select :family_group, options_for_select(User.family_groups, @user.family_group), {prompt: "Select Family Group..."}, class: "form-control"
 
-  %h4 Please Confirm:
+  .facebook-confirm
+    Please Confirm:
 
   .form-group
     = f.label :first_name, class: "col-sm-2 control-label"
