@@ -5,6 +5,9 @@ body.about-home {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  @media (max-width: 768px) {
+    background-position: 12% center;
+  }
 
   #fb-connect {
     text-align: center;

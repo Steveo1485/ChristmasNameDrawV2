@@ -5,6 +5,9 @@ body[class^='devise'], body.users-facebook {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  @media (max-width: 768px) {
+    background-position: 12% center;
+  }
 
   h1 {
     text-align: center;
