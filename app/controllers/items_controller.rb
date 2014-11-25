@@ -9,6 +9,7 @@ class ItemsController  < ApplicationController
   def create
     # Update this to handle failure - render new with errors, instead of a redirect
     @item = Item.new(item_params)
+    @item.list_id = current_user.list.id
     authorize(@item)
     if @item.save
       redirect_to user_root_path, notice: "Item saved to list!"

@@ -20,7 +20,8 @@ RSpec.describe ItemsController, :type => :controller do
 
     it "should not allow an Item to be created for a list that doesn't belong to the user" do
       other_user = FactoryGirl.create(:user)
-      expect{ post :create, item: {name: @item_build.name, list_id: other_user.list.id} }.to_not change(Item, :count)
+      post :create, item: {name: @item_build.name, list_id: other_user.list.id}
+      expect(Item.last.list).to eq(@user.list)
     end
   end
 
