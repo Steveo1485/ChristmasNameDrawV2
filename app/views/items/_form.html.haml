@@ -2,7 +2,15 @@
   = render "shared/errors", object: @item
 
   .form-group
-    = f.label :name
+    = f.label :name, "Item Name"
     = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :url, "Website Address to Item"
+    = f.text_field :url, class: "form-control"
+
+  .form-group
+    = f.label :notes
+    = f.text_field :notes, class: "form-control"
 
   = f.submit("#{@item.new_record? ? 'Add Item' : 'Edit Item'}", class: "btn btn-success")
