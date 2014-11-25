@@ -5,4 +5,4 @@
     = f.label :name
     = f.text_field :name, class: "form-control"
 
-  = f.submit("#{@item.new_record? ? 'Add Item' : 'Edit Item'}")
+  = f.submit("#{@item.new_record? ? 'Add Item' : 'Edit Item'}", class: "btn btn-success")
