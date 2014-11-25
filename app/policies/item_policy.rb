@@ -6,8 +6,20 @@ class ItemPolicy < ApplicationPolicy
     @record = record
   end
 
-  def create?
+  def new?
     @user.list.id == @record.list_id
+  end
+
+  def create?
+    new?
+  end
+
+  def edit?
+    @user.list.id == @record.list_id
+  end
+
+  def update?
+    edit?
   end
 
 end
