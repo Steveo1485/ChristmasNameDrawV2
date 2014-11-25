@@ -1,4 +1,20 @@
 %h1= "#{@user.first_name}'s Dashboard"
 
-%h3 Your List
-= @user.list
+.row
+  .col-md-5
+    %h3 Your List
+
+    - if @user.list.items.any?
+      - @user.list.items.each do |item|
+        = item.name
+    - else
+      Nothing saved to your list yet. Add an item and get started!
+
+    .well
+      %h6 Add Item To Your List
+      = render "items/form"
+
+  .col-md-2
+
+  .col-md-5
+    %h3 Match List
