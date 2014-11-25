@@ -1,0 +1,6 @@
+- if defined?(object) and object.errors.any?
+  .errors
+    == The following errors prohibited the #{object.class.name} from being submitted:
+    %ul
+      - object.errors.full_messages.each do |message|
+        %li= message

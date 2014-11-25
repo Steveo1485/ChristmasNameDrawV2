@@ -1,4 +1,11 @@
 %h1= "#{@user.first_name}'s Dashboard"
 
 %h3 Your List
-= @user.list
+
+- if @user.list.items.any?
+  - @user.list.items.each do |item|
+    = item.name
+- else
+  Nothing saved to your list yet. Add an item and get started!
+
+= render "items/form"

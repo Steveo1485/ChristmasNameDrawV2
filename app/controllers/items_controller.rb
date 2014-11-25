@@ -7,14 +7,13 @@ class ItemsController  < ApplicationController
   end
 
   def create
-    # Update this to handle failure - render new with errors, instead of a redirect
     @item = Item.new(item_params)
     @item.list_id = current_user.list.id
     authorize(@item)
     if @item.save
       redirect_to user_root_path, notice: "Item saved to list!"
     else
-      redirect_to user_root_path, alert: "Sorry, item wasn't saved."
+      render :new
     end
   end
 
@@ -23,23 +22,22 @@ class ItemsController  < ApplicationController
   end
 
   def update
-    # Update this to handle failure - render new with errors, instead of a redirect
     authorize(@item)
     if @item.update(item_params)
       redirect_to user_root_path, notice: "Item updated!"
     else
-      redirect_to user_root_path, alert: "Sorry, item wasn't updated."
+      render :edit
     end
   end
 
   def destroy
-    # Update this to handle failure - render new with errors, instead of a redirect
     authorize(@item)
     if @item.destroy
-      redirect_to user_root_path, notice: "Item deleted."
+      flash[:notice] = "Item removed from list."
     else
-      redirect_to user_root_path, alert: "Item not deleted"
+      flash[:alert] = "Sorry, item not deleted. Please try again."
     end
+    redirect_to user_root_path
   end
 
   private

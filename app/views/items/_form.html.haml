@@ -1,4 +1,6 @@
 = form_for @item, url: (@item.new_record? ? items_path(@item) : item_path(@item) ) do |f|
+  = render "shared/errors", object: @item
+
   .form-group
     = f.label :name
     = f.text_field :name, class: "form-control"

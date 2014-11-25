@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def dashboard
     authorize(current_user)
     @user = current_user
+    @item = Item.new
   end
 
   def facebook
