@@ -7,17 +7,7 @@
 
   .tab-content
     .tab-pane.active#your-list{role: "tabpanel"}
-      %h3 Your List
-
-      - if @user.list.items.any?
-        - @user.list.items.each do |item|
-          = item.name
-      - else
-        Nothing saved to your list yet. Add an item and get started!
-
-      .well
-        %h6 Add Item To Your List
-        = render "items/form"
+      = render "lists/user"
 
     .tab-pane#pair-list{role: "tabpanel"}
       %h3 Pair's List
