@@ -58,4 +58,16 @@ RSpec.describe ItemsController, :type => :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "should destroy an item tied to the current user" do
+      expect{ delete :destroy, id: @item.id }.to change(Item, :count).by(-1)
+    end
+
+    it "shouldn't destroy an item not tied to the current user" do
+      other_user = FactoryGirl.create(:user)
+      other_item = FactoryGirl.create(:item, list: other_user.list)
+      expect{ delete :destroy, id: other_item.id }.to_not change(Item, :count)
+    end
+  end
+
 end

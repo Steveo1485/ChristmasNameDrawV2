@@ -22,4 +22,8 @@ class ItemPolicy < ApplicationPolicy
     edit?
   end
 
+  def destroy?
+    @user.list.id == @record.list_id
+  end
+
 end

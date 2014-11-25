@@ -1,5 +1,5 @@
 class ItemsController  < ApplicationController
-  before_filter :fetch_item, only: [:edit, :update]
+  before_filter :fetch_item, only: [:edit, :update, :destroy]
 
   def new
     @item = Item.new(list_id: current_user.list.id)
@@ -28,6 +28,16 @@ class ItemsController  < ApplicationController
       redirect_to user_root_path, notice: "Item updated!"
     else
       redirect_to user_root_path, alert: "Sorry, item wasn't updated."
+    end
+  end
+
+  def destroy
+    # Update this to handle failure - render new with errors, instead of a redirect
+    authorize(@item)
+    if @item.destroy
+      redirect_to user_root_path, notice: "Item deleted."
+    else
+      redirect_to user_root_path, alert: "Item not deleted"
     end
   end
 
