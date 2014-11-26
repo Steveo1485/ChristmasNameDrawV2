@@ -1,0 +1,23 @@
+%h3 Your List
+
+- if @user.list.items.any?
+  - @user.list.items.each do |item|
+    .row.item{class: "#{cycle('even', 'odd')}"}
+      .col-sm-12
+        .item-name= item.name
+
+        - if item.url
+          = link_to("Link to #{item.name}", item.url)
+
+        .item-notes= item.notes
+
+        .item-link= link_to(raw("#{fa_icon("times-circle")} Delete Item"), item_path(item), method: :delete, "data-confirm" => "Are you sure you want to remove #{item.name} from your list?")
+
+        .item-link= link_to(raw("#{fa_icon("pencil-square-o")} Edit Item"), edit_item_path(item))
+
+- else
+  Nothing saved to your list yet. Add an item and get started!
+
+.well
+  %h6 Add Item To Your List
+  = render "items/form"

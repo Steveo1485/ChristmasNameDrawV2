@@ -1,20 +1,13 @@
 %h1= "#{@user.first_name}'s Dashboard"
 
-.row
-  .col-md-5
-    %h3 Your List
+%div{role: "tabpanel"}
+  %ul.nav.nav-tabs{role: "tablist"}
+    %li.active{role: "presentation"}= link_to("Your List", "#your-list", "aria-controls" => "your-list", "data-toggle" => "tab")
+    %li{role: "presentation"}= link_to("Pair's List", "#pair-list", "aria-controls" => "pair-list", "data-toggle" => "tab")
 
-    - if @user.list.items.any?
-      - @user.list.items.each do |item|
-        = item.name
-    - else
-      Nothing saved to your list yet. Add an item and get started!
+  .tab-content
+    .tab-pane.active#your-list{role: "tabpanel"}
+      = render "lists/user"
 
-    .well
-      %h6 Add Item To Your List
-      = render "items/form"
-
-  .col-md-2
-
-  .col-md-5
-    %h3 Match List
+    .tab-pane#pair-list{role: "tabpanel"}
+      %h3 Pair's List
