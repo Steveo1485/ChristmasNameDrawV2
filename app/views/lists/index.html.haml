@@ -1,0 +1,18 @@
+%h1.text-center Pair Lists
+
+= form_tag update_lists_path, method: :patch, class: "form-horizontal" do
+
+  - for list in @lists do
+    .form-group
+      = label_tag list.paired_user_id, "#{list.user.name}'s List Paired With:", class: "col-sm-2 control-label"
+      .col-sm-8
+        = select_tag("lists[#{list.id}]", 
+                     options_for_select(User.all.map { |user| [user.name, user.id] }, list.paired_user_id),
+                     { prompt: "Select Pair...", class: "form-control"})
+
+  .form-group
+    .col-sm-offset-2.col-sm-8
+      = submit_tag("Update Lists", class: "btn btn-success")
+
+
+
