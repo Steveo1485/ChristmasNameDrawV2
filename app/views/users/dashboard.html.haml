@@ -8,6 +8,8 @@
         %li= link_to(associated_user.user.name, dashboard_path(user_id: associated_user.user.id))
       - unless @user == current_user
         %li= link_to(current_user.name, dashboard_path)
+- else
+  = link_to("Add User", new_user_path, class: "btn btn-success", id: "associated-users")
 
 %div{role: "tabpanel"}
   %ul.nav.nav-tabs{role: "tablist"}
