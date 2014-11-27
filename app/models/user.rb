@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_one :list
+  has_one :associated_owner, class_name: AssociatedUser, foreign_key: :user_id
+  has_many :associated_users, foreign_key: :owner_user_id
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :family_group, inclusion: { in: Proc.new { User.family_groups } }
+  validates :email, presence: true
 
   after_create :create_list
 
@@ -24,6 +27,19 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
     end
+  end
+
+  def name
+    [first_name, last_name].join(" ")
+  end
+
+  # Devise - Allow Duplicate Emails
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
   end
 
   private
