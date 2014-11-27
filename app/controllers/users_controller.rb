@@ -24,6 +24,7 @@ class UsersController < ApplicationController
       end
     end
     if validation_passed
+      UserMailer.welcome(@user).deliver
       redirect_to user_root_path, notice: "Associated user successfully created!"
     else
       render :new
