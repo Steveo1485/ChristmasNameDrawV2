@@ -3,7 +3,7 @@
   .btn-group#associated-users
     %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => false}
       = raw("Switch User <span class='caret'>")
-    %ul.dropdown-menu
+    %ul.dropdown-menu.dropdown-menu-right
       - for associated_user in @user.associated_users
         %li= link_to(associated_user.user.name, dashboard_path(user_id: associated_user.user.id))
       - unless @user == current_user
