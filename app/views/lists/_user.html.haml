@@ -1,4 +1,4 @@
-%h3 Your List
+%h3= "#{@user.first_name}'s List"
 
 - if @user.list.items.any?
   - @user.list.items.each do |item|

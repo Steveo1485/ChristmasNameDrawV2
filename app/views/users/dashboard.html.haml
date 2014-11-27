@@ -1,8 +1,7 @@
-%h1= "#{@user.first_name}'s Dashboard"
-
+%h1.text-center= "#{@user.first_name}'s Dashboard"
 - if @user.associated_users.any? or @user.associated_owner
-  .btn-group
-    %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => false}
+  .btn-group#associated-users
+    %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => false}
       = raw("Switch User <span class='caret'>")
     %ul.dropdown-menu
       - for associated_user in @user.associated_users

@@ -1,6 +1,7 @@
 @import 'fonts';
 @import 'colors';
 
+
 h1, h2, h3, h4, h5 {
   font-family: $main-serif;
   font-weight: bold;
@@ -33,5 +34,6 @@ h6 {
 }
 
 body {
+  background-color: $gray;
   font-family: $main-sans;
 }
