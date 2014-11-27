@@ -1,7 +1,7 @@
 @import "colors";
 
 body[class^='devise'], body.users-facebook {
-  background-image: url('home/pike-place-christmas-white.jpg');
+  background-image: image-url('home/pike-place-christmas-white.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -39,7 +39,7 @@ body[class^='devise'], body.users-facebook {
       width: 190px;
       display: block;
       background-color: #3b579d;
-      background-image: url('icons/facebook.png');
+      background-image: image-url('icons/facebook.png');
       background-repeat: no-repeat;
       background-position: 2% 40%;
       padding-left: 22px;
