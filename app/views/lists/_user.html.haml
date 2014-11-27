@@ -20,4 +20,4 @@
 
 .well
   %h6 Add Item To Your List
-  = render "items/form"
+  = render "items/form", owner_list_id: @user.list.id

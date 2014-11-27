@@ -13,4 +13,6 @@
     = f.label :notes
     = f.text_field :notes, class: "form-control"
 
+    = f.hidden_field :list_id, value: owner_list_id
+
   = f.submit("#{@item.new_record? ? 'Add Item' : 'Edit Item'}", class: "btn btn-success")

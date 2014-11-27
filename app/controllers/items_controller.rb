@@ -8,10 +8,9 @@ class ItemsController  < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.list_id = current_user.list.id
     authorize(@item)
     if @item.save
-      redirect_to user_root_path, notice: "Item saved to list!"
+      redirect_to user_root_path(user_id: @item.list.user_id), notice: "Item saved to list!"
     else
       render :new
     end
@@ -24,7 +23,7 @@ class ItemsController  < ApplicationController
   def update
     authorize(@item)
     if @item.update(item_params)
-      redirect_to user_root_path, notice: "Item updated!"
+      redirect_to user_root_path(user_id: @item.list.user_id), notice: "Item updated!"
     else
       render :edit
     end
@@ -37,13 +36,13 @@ class ItemsController  < ApplicationController
     else
       flash[:alert] = "Sorry, item not deleted. Please try again."
     end
-    redirect_to user_root_path
+    redirect_to user_root_path(user_id: @item.list.user_id)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :url, :notes)
+    params.require(:item).permit(:name, :url, :notes, :list_id)
   end
 
   def fetch_item

@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    if params[:associated_user_id]
-      @user = User.find(params[:associated_user_id])
+    if params[:user_id]
+      @user = User.find(params[:user_id])
     else
       @user = current_user
     end

@@ -11,11 +11,11 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    @user.list.id == @record.list_id or @user.associated_users.pluck(:user_id).include?(@record.list.user_id)
   end
 
   def edit?
-    @user.list.id == @record.list_id
+    @user.list.id == @record.list_id or @user.associated_users.pluck(:user_id).include?(@record.list.user_id)
   end
 
   def update?
@@ -23,7 +23,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.list.id == @record.list_id
+    @user.list.id == @record.list_id or @user.associated_users.pluck(:user_id).include?(@record.list.user_id)
   end
 
 end

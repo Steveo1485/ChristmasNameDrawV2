@@ -1,5 +1,5 @@
 %h1 Edit Item
 
-= render "form"
+= render "form", owner_list_id: @item.list_id
 
 = link_to("Back", user_root_path)
