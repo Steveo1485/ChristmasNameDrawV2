@@ -1,0 +1,20 @@
+= form_for @user, url: associated_user_path(@user) do |f|
+  = render "shared/errors", object: @user
+
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, placeholder: "First name", class: "form-control"
+
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, placeholder: "Last name", class: "form-control"
+
+  .form-group
+    = f.label :family_group
+    = f.select :family_group, options_for_select(User.family_groups, @user.family_group), {prompt: "Select Family Group..."}, class: "form-control"
+
+  .form-group
+    = f.label :email, "Email - Notifications will be sent to this address."
+    = f.email_field :email, placeholder: "Email", class: "form-control"
+
+  = f.submit("Add User")

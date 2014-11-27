@@ -4,9 +4,39 @@ class UsersController < ApplicationController
   skip_after_action :verify_policy_scoped, only: [:facebook]
   after_action :clear_facebook_session, only: [:facebook]
 
+  def new
+    @user = User.new
+    authorize(@user)
+  end
+
+  def create
+    @user = User.new(user_params)
+    authorize(@user)
+    validation_passed = true
+    User.transaction do
+      begin
+        @user.password = Devise.friendly_token[0,20]
+        @user.save!
+        AssociatedUser.create(owner_user_id: current_user.id, user_id: @user.id)
+      rescue ActiveRecord::RecordInvalid => error
+        validation_passed = false
+        raise ActiveRecord::Rollback
+      end
+    end
+    if validation_passed
+      redirect_to user_root_path, notice: "Associated user successfully created!"
+    else
+      render :new
+    end
+  end
+
   def dashboard
-    authorize(current_user)
-    @user = current_user
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+    authorize(@user)
     @item = Item.new
   end
 
@@ -20,6 +50,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :family_group, :email, :password)
+  end
 
   def clear_facebook_session
     session["devise.facebook_data"].clear
