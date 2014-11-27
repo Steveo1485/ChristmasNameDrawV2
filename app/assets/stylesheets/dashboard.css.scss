@@ -5,4 +5,21 @@ body.users-dashboard {
   #associated-users {
     float: right;
   }
+
+  .item {
+    padding: 0.75em;
+  }
+
+  .well {
+    margin-top: 1em;
+  }
+
+  .item-link {
+    display: inline;
+    margin-right: 3em;
+  }
+
+  .panel-title {
+    font-weight: bold;
+  }
 }

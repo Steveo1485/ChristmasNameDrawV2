@@ -11,7 +11,7 @@
 
 %div{role: "tabpanel"}
   %ul.nav.nav-tabs{role: "tablist"}
-    %li.active{role: "presentation"}= link_to("Your List", "#your-list", "aria-controls" => "your-list", "data-toggle" => "tab")
+    %li.active{role: "presentation"}= link_to("#{@user.first_name}'s List", "#your-list", "aria-controls" => "your-list", "data-toggle" => "tab")
     %li{role: "presentation"}= link_to("Pair's List", "#pair-list", "aria-controls" => "pair-list", "data-toggle" => "tab")
 
   .tab-content
