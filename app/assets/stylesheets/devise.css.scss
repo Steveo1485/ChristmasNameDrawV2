@@ -1,6 +1,6 @@
 @import "colors";
 
-body[class^='devise'], body.users-facebook {
+body[class^='devise'], body.custom_registration-new, body.custom_registration-create, body.users-facebook {
   background-image: image-url('home/pike-place-christmas-white.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;

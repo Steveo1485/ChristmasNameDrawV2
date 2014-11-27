@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :associated_users, foreign_key: :owner_user_id
 
   validates :first_name, presence: true
+  validates :first_name, uniqueness: { scope: :last_name, message: "already taken with that last name."}
   validates :last_name, presence: true
   validates :family_group, inclusion: { in: Proc.new { User.family_groups } }
   validates :email, presence: true
