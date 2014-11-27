@@ -2,4 +2,4 @@
 
 = render "form", owner_list_id: @item.list_id
 
-= link_to("Back", user_root_path)
+= link_to("Back", dashboard_path(user_id: @item.list.user_id))

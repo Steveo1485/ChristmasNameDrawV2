@@ -1,8 +1,7 @@
-%h1= "#{@user.first_name}'s Dashboard"
-
+%h1.text-center= "#{@user.first_name}'s Dashboard"
 - if @user.associated_users.any? or @user.associated_owner
-  .btn-group
-    %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => false}
+  .btn-group#associated-users
+    %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => false}
       = raw("Switch User <span class='caret'>")
     %ul.dropdown-menu
       - for associated_user in @user.associated_users
@@ -12,7 +11,7 @@
 
 %div{role: "tabpanel"}
   %ul.nav.nav-tabs{role: "tablist"}
-    %li.active{role: "presentation"}= link_to("Your List", "#your-list", "aria-controls" => "your-list", "data-toggle" => "tab")
+    %li.active{role: "presentation"}= link_to("#{@user.first_name}'s List", "#your-list", "aria-controls" => "your-list", "data-toggle" => "tab")
     %li{role: "presentation"}= link_to("Pair's List", "#pair-list", "aria-controls" => "pair-list", "data-toggle" => "tab")
 
   .tab-content

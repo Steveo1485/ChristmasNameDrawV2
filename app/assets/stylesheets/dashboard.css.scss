@@ -1,0 +1,23 @@
+@import 'fonts';
+
+body.users-dashboard {
+  
+  #associated-users {
+    float: right;
+  }
+
+  .well {
+    margin-top: 1em;
+  }
+
+  .item-link {
+    margin-left: 1em;
+    display: inline;
+  }
+
+  .panel-title {
+    padding-top: 1em;
+    padding-left: 1em;
+    font-weight: bold;
+  }
+}

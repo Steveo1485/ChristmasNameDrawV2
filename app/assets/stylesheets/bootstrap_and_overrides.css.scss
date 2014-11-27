@@ -6,6 +6,12 @@ $navbar-border-radius: 0;
 
 $brand-success: $green;
 $brand-warning: $red;
+$brand-primary: $red;
+
+$state-info-bg: lighten($green, 50%);
+
+$nav-tabs-active-link-hover-color: $green;
+$nav-tabs-active-link-hover-border-color: $red;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
