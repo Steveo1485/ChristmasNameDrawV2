@@ -17,4 +17,5 @@
     = f.label :email, "Email - Notifications will be sent to this address."
     = f.email_field :email, placeholder: "Email", class: "form-control"
 
-  = f.submit("Add User")
+  = f.submit("Add User", class: "btn btn-success")
+  = link_to("Cancel", user_root_path, class: "btn btn-danger")
