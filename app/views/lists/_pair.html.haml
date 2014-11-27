@@ -1,0 +1,34 @@
+%h3= "#{pair_name(@user)}'s List"
+
+- if @user.paired_list
+  - if @user.paired_list.items.any?
+    - @user.paired_list.items.each do |item|
+      .panel.panel-default
+        .panel-header
+          .panel-title= item.name
+        .panel-body
+          .row
+            .col-xs-2.col-sm-1
+              Link:
+            .col-xs-10.col-sm-11
+              - if item.url.present?
+                = link_to(item.name, item.full_url, target: "new")
+              - else
+                No link provided.
+
+          .row
+            .col-xs-2.col-sm-1
+              Notes:
+            .col-xs-10.col-sm-11
+              - if item.notes.present?
+                = item.notes
+              - else
+                No notes provided.
+  - else
+    .panel.panel-default
+      .panel-body
+        == Sorry, #{pair_name(@user)} hasn't added any items to their list yet.
+- else
+  .panel.panel-default
+    .panel-body
+      Sorry, you don't have a pair yet.

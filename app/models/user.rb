@@ -43,6 +43,18 @@ class User < ActiveRecord::Base
     false
   end
 
+  def paired_user
+    if paired_list
+      paired_list.user
+    else
+      nil
+    end
+  end
+
+  def paired_list
+    List.where(paired_user_id: self.id).first
+  end
+
   private
 
   def create_list
