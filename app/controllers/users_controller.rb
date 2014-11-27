@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
-    if validation_passed
+    if validation_passed and Rails.env.production?
       UserMailer.welcome(@user).deliver
       redirect_to user_root_path, notice: "Associated user successfully created!"
     else

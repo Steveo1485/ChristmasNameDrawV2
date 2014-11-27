@@ -28,23 +28,23 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "POST #create" do
     before :each do
-      user = FactoryGirl.build(:user)
+      @build_user = FactoryGirl.build(:user)
     end
 
     it "should create a new user with valid attributes" do
-      expect{ post :create, user: @user.attributes }.to change(User, :count).by(1)
+      expect{ post :create, user: @build_user.attributes }.to change(User, :count).by(1)
     end
 
     it "should create a new associated user" do
-      expect{ post :create, user: @user.attributes }.to change(AssociatedUser, :count).by(1)
+      expect{ post :create, user: @build_user.attributes }.to change(AssociatedUser, :count).by(1)
     end
 
     it "should not create a new user with invalid attributes" do
-      expect{ post :create, user: {first_name: @user.attributes[:first_name]} }.to_not change(User, :count)
+      expect{ post :create, user: {first_name: @build_user.attributes[:first_name]} }.to_not change(User, :count)
     end
 
     it "should not create a new associated user with invalid attributes" do
-      expect{ post :create, user: {first_name: @user.attributes[:first_name]} }.to_not change(AssociatedUser, :count)
+      expect{ post :create, user: {first_name: @build_user.attributes[:first_name]} }.to_not change(AssociatedUser, :count)
     end
   end
 
