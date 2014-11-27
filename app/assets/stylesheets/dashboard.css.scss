@@ -6,20 +6,18 @@ body.users-dashboard {
     float: right;
   }
 
-  .item {
-    padding: 0.75em;
-  }
-
   .well {
     margin-top: 1em;
   }
 
   .item-link {
+    margin-left: 1em;
     display: inline;
-    margin-right: 3em;
   }
 
   .panel-title {
+    padding-top: 1em;
+    padding-left: 1em;
     font-weight: bold;
   }
 }

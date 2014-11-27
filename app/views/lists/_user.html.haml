@@ -2,7 +2,7 @@
 
 - if @user.list.items.any?
   - @user.list.items.each do |item|
-    .panel.panel-default.item{class: "#{cycle('even', 'odd')}"}
+    .panel.panel-default
       .panel-header
         .panel-title= item.name
       .panel-body
@@ -29,7 +29,9 @@
           .item-link= link_to(raw("#{fa_icon("times-circle")} Delete Item"), item_path(item), method: :delete, "data-confirm" => "Are you sure you want to remove #{item.name} from your list?")
 
 - else
-  Nothing saved to your list yet. Add an item and get started!
+  .panel.panel-default
+    .panel-body
+      Nothing saved to your list yet. Add an item and get started!
 
 .well
   %h6 Add Item To Your List
