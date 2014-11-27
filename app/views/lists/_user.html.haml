@@ -11,7 +11,7 @@
             Link:
           .col-xs-10.col-sm-11
             - if item.url.present?
-              = link_to(item.name, item.url)
+              = link_to(item.name, item.full_url, target: "new")
             - else
               No link provided.
 
