@@ -2,20 +2,22 @@ Happy Holidays, <%= @user.first_name %>!
 
 <p>
   Your pair for the 2014 Christmas gift exchange has been selected! You are paired with:
-  <div><em><%= @paired_user.name %></em></div>
+  <div><strong><%= @paired_user.name %></strong></div>
+</p>
 
+<p>
   <% if @paired_user.list.items.any? %>
-  	They currently have the following on their list:
-  	<ul>
-  		<% @paired_user.list.items.each do |item| %>
-  			<li><%= item.name %></li>
-  		<% end %>
-  	</ul>
+    They currently have the following on their list:
+    <ul>
+      <% @paired_user.list.items.each do |item| %>
+        <li><%= item.name %></li>
+      <% end %>
+    </ul>
   <% else %>
-  	They haven't added anything to their list just yet.
+    They haven't added anything to their list just yet.
   <% end %>
 </p>
 
 <p>
-	Be sure to visit <%= link_to('http://christmas-name-draw.herokuapp.com', 'http://christmas-name-draw.herokuapp.com') %> to keep updating your list and to see new items your pair has added to their list.
-</p>å
+  Be sure to visit <%= link_to('http://christmas-name-draw.herokuapp.com', 'http://christmas-name-draw.herokuapp.com') %> to keep updating your list and to see new items your pair has added to their list.
+</p>

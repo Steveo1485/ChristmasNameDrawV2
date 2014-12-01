@@ -23,6 +23,7 @@ class ListsController < ApplicationController
       end
     end
     if validation_passed
+      send_pairing_notifications
       flash[:notice] = "Lists successfully updated!"
     else
       flash[:danger] = "Something went wrong. Please try again."
@@ -34,6 +35,12 @@ class ListsController < ApplicationController
 
   def lists_params
     params.require(:lists)
+  end
+
+  def send_pairing_notifications
+    User.all.each do |user|
+      ListMailer.paired(user).deliver
+    end
   end
 
 end
