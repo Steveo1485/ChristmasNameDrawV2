@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  belongs_to :list
+  belongs_to :list, touch: true
 
   validates :name, presence: true
   validates :list_id, numericality: true
