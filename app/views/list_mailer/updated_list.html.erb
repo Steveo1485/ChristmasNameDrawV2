@@ -1,0 +1,17 @@
+<p>
+  Hello, <%= @paired_user.first_name %>!
+<p>
+
+<p>
+  <%= @list_owner.first_name %>'s list has been updated! Here is their current list:"
+</p>
+
+<ul>
+  <% @list.items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  Be sure to log into <%= link_to('http://christmas-name-draw.herokuapp.com', 'http://christmas-name-draw.herokuapp.com') %> to see their complete list with links and notes, or to add items to your list.
+</p>
